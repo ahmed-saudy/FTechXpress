@@ -1,0 +1,45 @@
+﻿@model Product
+
+@* <h1>Product Details</h1> *@
+@* 
+<h1>@Model.ID</h1>
+<h1>@Model.Name</h1>
+<h1>@Model.Description</h1>
+<h1>@Model.Price</h1>
+<h1>@Model.Category.Name</h1> *@
+
+<br />
+<a asp-controller="Product" asp-action="All" class="btn btn-outline-dark flex-shrink-0 mt-3">Back to All Products</a>
+
+<!-- Product section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="~/@Model.ID-pro-gold-1662912120.jpg" alt="..." /></div>
+            <div class="col-md-6">
+                <div class="small mb-1">ID: @Model.ID</div>
+                <h1 class="display-5 fw-bolder">@Model.Name</h1>
+                <div class="fs-5 mb-5">
+                    <span >@Model.Price LE</span>
+                   
+                </div>
+                <p class="lead">@Model.Description</p>
+                <div class="d-flex">
+                    <form method="post" asp-controller="Cart" asp-action="Add">
+                    <input  class="form-control text-center me-3 mt-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button  class="btn btn-outline-dark flex-shrink-0 mt-3"   type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<br />
+
+@* <a asp-controller="Cart" asp-action="Add" class="btn btn-success"> To Cart </a> *@

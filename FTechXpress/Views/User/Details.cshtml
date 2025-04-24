@@ -1,0 +1,12 @@
+﻿
+@model UserViewModel
+
+<h1> User Details </h1>
+<div style="background:@Model.Color">
+<h1>@Model.Name</h1>
+<h1>Email: @Model.Email</h1>
+<h1>Phone Number: @Model.PhoneNumber</h1>
+<h1>Address: @Model.Address</h1>
+</div>
+<br />
+<a type="button" class="btn btn-info" href="/User/All"> Back To All Users </a>

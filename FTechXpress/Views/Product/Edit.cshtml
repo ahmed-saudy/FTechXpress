@@ -1,0 +1,43 @@
+﻿@model Product 
+@{
+    SelectList Categories = new SelectList(ViewBag.Category, "ID", "Name");
+}
+<h1>Editing Product </h1>
+<br />
+<form method="post" asp-controller="Product" asp-action="SaveEdit" asp-route-ID="@Model.ID">
+  <div>
+    <label asp-for="Name">Product Name:</label>
+    <input asp-for="Name" value="@Model.Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+<br />
+<div>
+    <label asp-for="Description">Description:</label>
+    <input asp-for="Description" value="@Model.Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+<br />
+<div>
+        <label asp-for="Price">Price:</label>
+        <input asp-for="Price" value="@Model.Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+<br />
+<div>
+        <label asp-for="Stock">Stock:</label>
+        <input asp-for="Stock" value="@Model.Stock" />
+        <span asp-validation-for="Stock" class="text-danger"></span>
+    </div>
+<br />
+    <div>
+        <label asp-for="Category.ID">Category:  </label>
+        <select asp-for="Category.ID" asp-items="Categories" value=@Model.Category.Name>
+           
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <br />
+<div>
+    <input type="submit" value="Save" />
+</div>
+</form>

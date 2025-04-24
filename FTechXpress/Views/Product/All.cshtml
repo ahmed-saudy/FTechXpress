@@ -1,0 +1,46 @@
+﻿@model List<Product>
+
+<h1> All Products </h1>
+@*  <a type="button" class="btn btn-primary" href="/Product/New">Add New Product</a> *@
+<a asp-controller="Product" asp-action="New"  class="btn btn-primary">Add New Product</a>
+ <h2>@ViewBag.WishList</h2>
+<h2>@ViewBag.Cart</h2>
+<h2>@TempData["Deleted"]</h2>
+<h2>@TempData["Added"]</h2>
+<h2>@TempData["Edited"]</h2>
+<!-- Section-->
+<section class="py-5">
+<div class="container px-4 px-lg-5 mt-5">
+	<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+		
+	@foreach (var product in Model)
+		{
+<div class="col mb-5">
+	<div class="card h-100">
+		<!-- Product image-->
+						<img class="card-img-top" src="~/@product.ID-pro-gold-1662912120.jpg" alt="..." />
+		<!-- Product details-->
+		<div class="card-body p-4">
+			<div class="text-center">
+				<!-- Product name-->
+				<h5 class="fw-bolder">@product.Name</h5>
+				<!-- Product price-->
+				@product.Price
+			</div>
+		</div>
+		<!-- Product actions-->
+		<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			<div class="text-center">
+				<a asp-controller="Product" asp-action="Details" asp-route-ID="@product.ID" class="btn btn-outline-success">Details</a>
+				<a asp-controller="Product" asp-action="Edit" asp-route-ID="@product.ID" class="btn btn-outline-warning">Edit</a>
+				<a asp-controller="product" asp-action="Delete" asp-route-ID="@product.ID" class="btn btn-outline-danger">Delete</a>
+			    <a asp-controller="Cart" asp-action="Add" class="btn btn-success mt-4" >To Cart</a>
+				<a asp-controller="WishlList" asp-action="Add" class="btn btn-success mt-4">Wish List</a>
+			</div>
+		</div>
+	</div>
+</div>
+}
+		</div>
+	</div>
+	</section>
